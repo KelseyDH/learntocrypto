@@ -1,0 +1,1 @@
+[{"value":{"cmd":"deposit","amount":100},"hash":"2c178aa030633cf113b357dcbe68de8a597edcbc30d6799216753163676fc72b"},{"value":{"cmd":"deposit","amount":50},"hash":"3cb3d9528c3d2f7b46204405e6f6a27d3c36d377608dc12e5e2777037fcfcfa7"},{"value":{"cmd":"withdraw","amount":-100},"hash":"f2fdc9169cd85e9711c1f4d2b311c6b9dade36858c5ee098b18b745007f867f1"}]
