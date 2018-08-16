@@ -11,7 +11,7 @@ var genesisHash = Buffer.alloc(32).toString('hex') // e.g. "00000000000000000000
 
 var publicKey = Buffer.from(fs.readFileSync('public.txt'), 'hex') 
 var secretKey = Buffer.from(fs.readFileSync('secret.txt'), 'hex' ) 
-sodium.crypto_sign_keypair(publicKey, secretKey)
+// sodium.crypto_sign_keypair(publicKey, secretKey)
 
 
 if ( isEmpty(publicKey) || isEmpty(secretKey) ) {
@@ -94,7 +94,7 @@ function validateLog(acc, entry) {
   if ((currentHash === entry.hash) && verify(entry.signature, entry.hash, publicKey)) {
         return acc
     } else {
-        throw { cmd: 'error', msg: 'Invalid log' }
+        return { cmd: 'error', msg: 'Invalid log' }
     }
 }
 
@@ -109,8 +109,9 @@ function appendToTransactionLog(entry) {
         hash: hashToHex(prevHash + JSON.stringify(entry)),
         signature: sign(hashToHex(prevHash + JSON.stringify(entry)), secretKey)
     })
-   log.reduce(validateLog, [])
-    writeToFile(log)
+   writeToFile(log)
+    log.reduce(validateLog, [])
+
 }
 
 function writeToFile(log) {
